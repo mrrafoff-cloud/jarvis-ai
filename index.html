@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self';">
+  <title>NEURIX</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">N</span><span>NEURIX</span></div>
+    <div class="top-status"><span class="status-dot"></span><span id="statusText">SISTEMA PREPARADO</span></div>
+    <button class="icon-button" id="settingsButton" aria-label="Ajustes" title="Ajustes">⚙</button>
+  </header>
+  <main class="stage">
+    <div class="eyebrow">ASISTENTE PERSONAL</div>
+    <div class="orb-wrap" id="orbWrap">
+      <div class="orb-halo halo-a"></div><div class="orb-halo halo-b"></div>
+      <div class="orb" id="orb"><div class="orb-shine"></div><div class="orb-core"></div><div class="orb-wave wave-one"></div><div class="orb-wave wave-two"></div></div>
+      <div class="orb-shadow"></div>
+    </div>
+    <h1 id="mainMessage">¿En qué puedo ayudarte?</h1>
+    <p class="subtitle" id="subMessage">Pulsa el micrófono y habla conmigo.</p>
+    <div class="voice-controls">
+      <button class="mic-button" id="micButton" aria-label="Hablar"><span class="mic-glyph">🎙</span></button>
+      <span class="mic-caption" id="micCaption">PULSA PARA HABLAR</span>
+    </div>
+    <form id="commandForm" class="command-bar">
+      <input id="commandInput" autocomplete="off" placeholder="Escribe un comando..." aria-label="Escribe un comando">
+      <button type="submit" aria-label="Enviar">↑</button>
+    </form>
+    <div class="quick-hints"><span>Prueba:</span><button data-command="Abre YouTube">Abre YouTube</button><i></i><button data-command="Abre Spotify">Abre Spotify</button><i></i><button data-command="Qué puedes hacer">Qué puedes hacer</button></div>
+  </main>
+  <section class="action-panel hidden" id="actionPanel">
+    <div class="panel-head"><div><span class="panel-kicker">NEURIX · ACCIÓN</span><h2 id="panelTitle">Acción solicitada</h2></div><button class="close-button" id="closePanel" aria-label="Cerrar">×</button></div>
+    <div id="panelContent"></div>
+  </section>
+  <section class="settings-panel hidden" id="settingsPanel">
+    <div class="panel-head"><div><span class="panel-kicker">CONFIGURACIÓN</span><h2>Preferencias</h2></div><button class="close-button" id="closeSettings" aria-label="Cerrar">×</button></div>
+    <div class="setting-row"><div><strong>Respuesta por voz</strong><small>Leer las respuestas en voz alta</small></div><label class="switch"><input id="voiceToggle" type="checkbox" checked><span></span></label></div>
+    <div class="setting-row"><div><strong>Idioma de reconocimiento</strong><small>Idioma utilizado al hablar</small></div><select id="languageSelect"><option value="es-ES">Español</option><option value="en-US">English</option></select></div>
+    <p class="settings-note">El reconocimiento de voz depende de la compatibilidad del sistema y puede necesitar conexión a internet. Las conexiones externas requieren autorización propia.</p>
+  </section>
+  <footer><span>NEURIX DESKTOP · PREVIEW 0.1</span><span class="footer-right">PRIVADO EN ESTE DISPOSITIVO</span></footer>
+  <script src="renderer.js"></script>
+</body>
+</html>
