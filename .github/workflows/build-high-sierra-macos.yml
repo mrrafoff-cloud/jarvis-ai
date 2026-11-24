@@ -1,0 +1,45 @@
+name: Build NEURIX for macOS High Sierra (Intel)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - high-sierra-macos
+    paths:
+      - "package.json"
+      - "main.js"
+      - "preload.js"
+      - "index.html"
+      - "styles.css"
+      - "renderer.js"
+      - ".github/workflows/build-high-sierra-macos.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-macos-intel:
+    runs-on: macos-15-intel
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build NEURIX DMG for Intel
+        run: npm run dist:mac
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: NEURIX-macOS-High-Sierra-Intel
+          path: release/*.dmg
+          if-no-files-found: error
+          retention-days: 30
