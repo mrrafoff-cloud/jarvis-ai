@@ -8,12 +8,12 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder",
-    "dist:mac": "electron-builder --mac dmg",
+    "dist:mac": "electron-builder --mac dmg --x64",
     "dist:win": "electron-builder --win nsis"
   },
   "devDependencies": {
-    "electron": "^36.4.0",
-    "electron-builder": "^26.0.12"
+    "electron": "26.6.10",
+    "electron-builder": "24.13.3"
   },
   "build": {
     "appId": "com.neurix.assistant",
@@ -23,7 +23,15 @@
     "mac": {
       "target": ["dmg"],
       "category": "public.app-category.productivity",
+      "minimumSystemVersion": "10.13.0",
       "extendInfo": { "NSMicrophoneUsageDescription": "NEURIX necesita el micrófono para escuchar tus comandos de voz." }
+    },
+    "dmg": {
+      "title": "Instalar NEURIX",
+      "contents": [
+        { "x": 130, "y": 190 },
+        { "x": 410, "y": 190, "type": "link", "path": "/Applications" }
+      ]
     },
     "win": { "target": ["nsis"] },
     "nsis": {
