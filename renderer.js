@@ -3,12 +3,32 @@ const micButton = $("micButton"), commandForm = $("commandForm"), commandInput =
 const statusText = $("statusText"), mainMessage = $("mainMessage"), subMessage = $("subMessage");
 const micCaption = $("micCaption"), actionPanel = $("actionPanel"), settingsPanel = $("settingsPanel");
 let recognition = null, listening = false, voiceEnabled = true, language = "es-ES";
+let fishAudio = null;
+async function refreshFishStatus() {
+  const state = await window.neurix.fishStatus();
+  const label = $("fishStatus");
+  if (label) label.textContent = state.configured ? "FISH AUDIO · CONECTADO" : "FISH AUDIO · SIN CONFIGURAR";
+}
 function setStatus(value) { statusText.textContent = value; }
-function speak(text) {
-  if (!voiceEnabled || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = language; utterance.rate = 1; window.speechSynthesis.speak(utterance);
+async function speak(text) {
+  if (!voiceEnabled) return;
+  if (fishAudio) { fishAudio.pause(); fishAudio = null; }
+  try {
+    const result = await window.neurix.fishTts(text);
+    if (result.ok) {
+      const audioUrl = URL.createObjectURL(new Blob([Uint8Array.from(atob(result.audio), c => c.charCodeAt(0))], { type: result.mimeType || "audio/mpeg" }));
+      fishAudio = new Audio(audioUrl);
+      fishAudio.onended = () => { URL.revokeObjectURL(audioUrl); fishAudio = null; };
+      await fishAudio.play();
+      return;
+    }
+    if (result.error && !result.error.includes("Configura tu API key")) console.warn(result.error);
+  } catch (error) { console.warn("Fish Audio no disponible:", error); }
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = language; utterance.rate = 1; window.speechSynthesis.speak(utterance);
+  }
 }
 function respond(text, options = {}) {
   document.body.classList.remove("thinking", "listening");
@@ -91,3 +111,17 @@ $("closeSettings").addEventListener("click", closePanels);
 $("closePanel").addEventListener("click", () => actionPanel.classList.add("hidden"));
 $("voiceToggle").addEventListener("change", event => { voiceEnabled = event.target.checked; });
 $("languageSelect").addEventListener("change", event => { language = event.target.value; });
+
+
+$("saveFishKey").addEventListener("click", async () => {
+  const input = $("fishApiKey");
+  const message = $("fishKeyMessage");
+  const key = input.value.trim();
+  if (!key) { message.textContent = "Escribe tu API key."; return; }
+  message.textContent = "Guardando de forma segura...";
+  const result = await window.neurix.saveFishApiKey(key);
+  input.value = "";
+  message.textContent = result.ok ? "API key guardada cifrada en este ordenador." : result.error;
+  await refreshFishStatus();
+});
+refreshFishStatus();
