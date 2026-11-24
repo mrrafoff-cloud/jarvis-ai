@@ -1,49 +1,13 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self';">
-  <title>NEURIX</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">N</span><span>NEURIX</span></div>
-    <div class="top-status"><span class="status-dot"></span><span id="statusText">SISTEMA PREPARADO</span></div>
-    <button class="icon-button" id="settingsButton" aria-label="Ajustes" title="Ajustes">⚙</button>
-  </header>
-  <main class="stage">
-    <div class="eyebrow">ASISTENTE PERSONAL</div>
-    <div class="orb-wrap" id="orbWrap">
-      <div class="orb-halo halo-a"></div><div class="orb-halo halo-b"></div>
-      <div class="orb" id="orb"><div class="orb-shine"></div><div class="orb-core"></div><div class="orb-wave wave-one"></div><div class="orb-wave wave-two"></div></div>
-      <div class="orb-shadow"></div>
-    </div>
-    <h1 id="mainMessage">¿En qué puedo ayudarte?</h1>
-    <p class="subtitle" id="subMessage">Pulsa el micrófono y habla conmigo.</p>
-    <div class="voice-controls">
-      <button class="mic-button" id="micButton" aria-label="Hablar"><span class="mic-glyph">🎙</span></button>
-      <span class="mic-caption" id="micCaption">PULSA PARA HABLAR</span>
-    </div>
-    <form id="commandForm" class="command-bar">
-      <input id="commandInput" autocomplete="off" placeholder="Escribe un comando..." aria-label="Escribe un comando">
-      <button type="submit" aria-label="Enviar">↑</button>
-    </form>
-    <div class="quick-hints"><span>Prueba:</span><button data-command="Abre YouTube">Abre YouTube</button><i></i><button data-command="Abre Spotify">Abre Spotify</button><i></i><button data-command="Qué puedes hacer">Qué puedes hacer</button></div>
-  </main>
-  <section class="action-panel hidden" id="actionPanel">
-    <div class="panel-head"><div><span class="panel-kicker">NEURIX · ACCIÓN</span><h2 id="panelTitle">Acción solicitada</h2></div><button class="close-button" id="closePanel" aria-label="Cerrar">×</button></div>
-    <div id="panelContent"></div>
-  </section>
-  <section class="settings-panel hidden" id="settingsPanel">
-    <div class="panel-head"><div><span class="panel-kicker">CONFIGURACIÓN</span><h2>Preferencias</h2></div><button class="close-button" id="closeSettings" aria-label="Cerrar">×</button></div>
-    <div class="setting-row"><div><strong>Respuesta por voz</strong><small>Leer las respuestas en voz alta</small></div><label class="switch"><input id="voiceToggle" type="checkbox" checked><span></span></label></div>
-    <div class="setting-row"><div><strong>Idioma de reconocimiento</strong><small>Idioma utilizado al hablar</small></div><select id="languageSelect"><option value="es-ES">Español</option><option value="en-US">English</option></select></div>
-    <p class="settings-note">El reconocimiento de voz depende de la compatibilidad del sistema y puede necesitar conexión a internet. Las conexiones externas requieren autorización propia.</p>
-  </section>
-  <footer><span>NEURIX DESKTOP · PREVIEW 0.1</span><span class="footer-right">PRIVADO EN ESTE DISPOSITIVO</span></footer>
-  <script src="renderer.js"></script>
-</body>
-</html>
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self';"><title>NEURIX</title><link rel="stylesheet" href="styles.css"></head><body>
+<div class="scanlines"></div><header class="topbar"><div class="brand"><b>N</b><span>NEURIX<small>INTELLIGENCE SYSTEM</small></span></div><div class="top-center"><i></i> SYSTEM ONLINE <i></i> SECURE SESSION</div><div class="top-right">CORE 01 <button class="icon-button" id="settingsButton" aria-label="Ajustes">⚙</button></div></header>
+<div class="date-strip"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="active">20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div>
+<main class="hud"><aside class="side"><section class="hud-card date-card"><div class="label">LOCAL DATE / SESSION</div><div class="date-ring"><span>NOVIEMBRE</span><strong>24</strong><span>2026</span></div><div class="small-row"><span>SESSION</span><b>ACTIVE</b></div></section>
+<section class="hud-card"><div class="label">NEURAL CORE</div><div class="small-row"><span>VOICE INPUT</span><b id="voiceState">STANDBY</b></div><div class="meter"><i style="width:18%"></i></div><div class="small-row"><span>AI RESPONSE</span><b id="statusText">READY</b></div><div class="meter"><i class="cyan" style="width:72%"></i></div><p class="micro">VOICE ENGINE · INTERFACE READY</p></section>
+<section class="hud-card"><div class="label">QUICK ACCESS</div><button class="hud-link" data-command="Abre YouTube">◈ YOUTUBE</button><button class="hud-link" data-command="Abre Spotify">◈ SPOTIFY</button><button class="hud-link" data-command="Abre Instagram">◈ INSTAGRAM</button><button class="hud-link" data-command="Abre TikTok">◈ TIKTOK</button></section></aside>
+<section class="center-stage"><div class="center-top"><span>NEURIX / CORE INTERFACE</span><span>V. 0.2 <b>●</b></span></div><div class="orb-wrap" id="orbWrap"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="tick-ring"></div><div class="orb-halo"></div><div class="orb" id="orb"><div class="orb-shine"></div><div class="orb-core"></div><div class="orb-wave wave-one"></div><div class="orb-wave wave-two"></div><div class="orb-wave wave-three"></div></div><div class="orb-shadow"></div><div class="core-label">NEURAL CORE <b>● ACTIVE</b></div></div>
+<div class="assistant-copy"><div class="eyebrow">PERSONAL AI ASSISTANT</div><h1 id="mainMessage">¿En qué puedo ayudarte?</h1><p class="subtitle" id="subMessage">El núcleo está preparado. Habla conmigo.</p></div><div class="voice-controls"><button class="mic-button" id="micButton" aria-label="Hablar"><span class="mic-glyph">🎙</span></button><span class="mic-caption" id="micCaption">PULSA PARA HABLAR</span></div><form id="commandForm" class="command-bar"><span>›</span><input id="commandInput" autocomplete="off" placeholder="Introduce una orden..." aria-label="Escribe un comando"><button type="submit">↗</button></form><div class="center-foot"><span>LISTENING CHANNEL 01</span><span>ENCRYPTED INTERFACE</span><span>READY FOR INPUT</span></div></section>
+<aside class="side"><section class="hud-card"><div class="label">SYSTEM STATUS <em>● LIVE</em></div><div class="status-big">100<span>%</span></div><div class="micro">CORE AVAILABILITY</div><div class="rule"></div><div class="small-row"><span>MICROPHONE</span><b id="micState">IDLE</b></div><div class="meter"><i class="cyan" style="width:12%"></i></div><div class="small-row"><span>CONNECTION</span><b>READY</b></div><div class="meter"><i style="width:88%"></i></div></section>
+<section class="hud-card"><div class="label">COMMAND LOG</div><div class="log"><b>01</b> CORE INITIALIZED <i>OK</i></div><div class="log"><b>02</b> VOICE MODULE STANDBY <i>OK</i></div><div class="log"><b>03</b> AWAITING USER INPUT <i>...</i></div></section><section class="hud-card"><div class="label">AVAILABLE MODULES</div><button class="hud-link" data-command="Qué puedes hacer">◈ COMMAND CENTER</button><button class="hud-link" data-command="Abre GitHub">◈ DEVELOPER TOOLS</button><button class="hud-link" data-command="Abre Discord">◈ COMMUNICATIONS</button><p class="micro">EXTERNAL ACCOUNTS REQUIRE AUTHORIZATION</p></section></aside></main>
+<section class="action-panel hidden" id="actionPanel"><div class="panel-head"><div><span class="panel-kicker">NEURIX · ACTION</span><h2 id="panelTitle">Acción solicitada</h2></div><button class="close-button" id="closePanel">×</button></div><div id="panelContent"></div></section>
+<section class="settings-panel hidden" id="settingsPanel"><div class="panel-head"><div><span class="panel-kicker">SYSTEM CONFIGURATION</span><h2>Preferencias</h2></div><button class="close-button" id="closeSettings">×</button></div><div class="setting-row"><div><strong>Respuesta por voz</strong><small>Leer las respuestas en voz alta</small></div><label class="switch"><input id="voiceToggle" type="checkbox" checked><span></span></label></div><div class="setting-row"><div><strong>Idioma de reconocimiento</strong><small>Idioma utilizado al hablar</small></div><select id="languageSelect"><option value="es-ES">Español</option><option value="en-US">English</option></select></div><p class="settings-note">El reconocimiento de voz depende de la compatibilidad del sistema. Las conexiones externas requieren autorización propia.</p></section>
+<footer><span>NEURIX DESKTOP · STARK HUD INTERFACE</span><span>ALL SYSTEMS NOMINAL · PRIVATE SESSION</span></footer><script src="renderer.js"></script></body></html>
