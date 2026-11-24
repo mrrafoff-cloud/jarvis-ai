@@ -1,0 +1,36 @@
+{
+  "name": "neurix-desktop",
+  "version": "0.1.0",
+  "description": "NEURIX - asistente de escritorio por voz",
+  "author": "NEURIX",
+  "license": "UNLICENSED",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^36.4.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.neurix.assistant",
+    "productName": "NEURIX",
+    "directories": { "output": "release" },
+    "files": ["main.js", "preload.js", "index.html", "styles.css", "renderer.js", "package.json"],
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.productivity",
+      "extendInfo": { "NSMicrophoneUsageDescription": "NEURIX necesita el micrófono para escuchar tus comandos de voz." }
+    },
+    "win": { "target": ["nsis"] },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
