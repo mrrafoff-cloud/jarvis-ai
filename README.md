@@ -3,7 +3,7 @@
 Aplicación de escritorio experimental con interfaz de esfera animada, control por voz y comandos básicos para abrir aplicaciones y servicios web.
 
 ## Requisitos
-- Node.js 20 o superior
+- Node.js 20 o superior para desarrollo.
 
 ## Ejecutar
 ```bash
@@ -20,8 +20,12 @@ npm start
 
 **Seguridad:** si una API key se compartió anteriormente en un chat o repositorio, revócala y crea otra antes de introducirla en NEURIX.
 
-## Crear instalador
-- macOS: `npm run dist:mac`
+## Instaladores
+- macOS actual: `npm run dist:mac`
 - Windows: `npm run dist:win`
+- High Sierra Intel: consulta la rama `high-sierra-macos`, que genera un DMG x64 mediante GitHub Actions.
 
-La compilación debe ejecutarse en el sistema operativo correspondiente o mediante GitHub Actions. El reconocimiento de voz depende de la compatibilidad del sistema. Las integraciones con cuentas y el análisis de estadísticas privadas requieren APIs oficiales y autorización adicional.
+## Compatibilidad High Sierra
+La rama `high-sierra-macos` fija Electron 26.6.10 porque Electron 27 y posteriores dejaron de admitir macOS 10.13. Esta versión antigua de Electron está fuera de soporte y no recibe parches de seguridad; se mantiene separada de la rama principal por ese motivo. El DMG debe probarse en un Mac con High Sierra antes de considerarlo listo para uso general.
+
+Las integraciones con cuentas y el análisis de estadísticas privadas requieren APIs oficiales y autorización adicional.
