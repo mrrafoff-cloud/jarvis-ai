@@ -20,7 +20,7 @@ function createWindow() {
     backgroundColor: "#070b14", title: "NEURIX", show: false, autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      contextIsolation: true, nodeIntegration: false, sandbox: true
+      contextIsolation: true, nodeIntegration: false, sandbox: true, autoplayPolicy: "no-user-gesture-required"
     }
   });
   mainWindow.loadFile("index.html");
